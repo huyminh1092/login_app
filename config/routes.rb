@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
+  
+  get     "login"    => "sessions#new"
+  post    "login"    => "sessions#create"
+  delete  "logout"   => "sessions#destroy"
 
+  get     "register"    => "sessions#register"
+  get      "home"    => "users#home"
   resources :users
   resources :teachers
   

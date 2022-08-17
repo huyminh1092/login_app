@@ -4,11 +4,11 @@ class TeachersController < ApplicationController
     end
     
     def new
-        @teacher=Teacher.new
+        @teacher = Teacher.new
     end
 
     def create
-        @teacher=Teacher.new teacher_params
+        @teacher = Teacher.new teacher_params
         if @teacher.save
             flash[:success]="Register successfully"
             redirect_to teachers_path

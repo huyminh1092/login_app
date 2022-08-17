@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
 
-    def index
+    def index     
+    end
+
+    def home
+        @user = User.find_by id: session[:current_user_id]
     end
 
     def new
@@ -11,12 +15,17 @@ class UsersController < ApplicationController
         @user = User.new user_params
         if @user.save
             flash[:success]="Register success"
-            redirect_to users_path
+            redirect_to login_path
         else 
-            flash[:success]="Register failed"
             render :new
+            @error=@user.errors
+           
         end
     end
+
+    def show
+        @user = User.find_by id: params[:id]
+      end
 
     
     private
